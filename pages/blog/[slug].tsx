@@ -1,6 +1,6 @@
 // import { BlogDisplay, Layout, SEO } from "~/components/common"
 
-import { MoreStories, PostBody, SectionSeparator, SEO } from 'components/common'
+import { Layout, MoreStories, PostBody, SectionSeparator, SEO } from 'components/common'
 import * as demo from 'lib/demo.data'
 import { apiVersion, dataset, projectId, useCdn } from 'lib/sanity.api'
 import { getSettings } from 'lib/sanity.client'
@@ -34,7 +34,6 @@ interface Query {
 interface PreviewData {
   token?: string
 }
-
 
 export default function Slug(props) {
   const { settings, post, blogPost, preview, token } = props
@@ -190,11 +189,12 @@ export default function Slug(props) {
               <article>
                 <PostBody content={post.content} />
               </article>
-              <SectionSeparator />
-              {blogPost?.length > 0 && <MoreStories posts={blogPost} />}
+
             </>
           )}
         </div>
+        <SectionSeparator />
+        {blogPost?.length > 0 && <MoreStories posts={blogPost} />}
       </div>
     </div>
   )
@@ -314,3 +314,5 @@ export const getStaticPaths = async () => {
     fallback: 'blocking',
   }
 }
+
+Slug.Layout = Layout

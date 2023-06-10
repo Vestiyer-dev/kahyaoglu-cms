@@ -1,5 +1,5 @@
 // import { BlogDisplay, Layout, SEO } from "~/components/common"
-import { BlogDisplay } from 'components/common'
+import { BlogDisplay, Layout } from 'components/common'
 import { apiVersion, dataset, projectId, useCdn } from 'lib/sanity.api'
 import { getSettings } from 'lib/sanity.client'
 import { Post, Settings } from 'lib/sanity.queries'
@@ -7,8 +7,6 @@ import { GetServerSideProps, GetStaticProps } from 'next'
 import { groq } from 'next-sanity'
 import { createClient } from 'next-sanity'
 import { lazy } from 'react'
-
-
 
 interface PageProps {
   post: Post
@@ -25,7 +23,6 @@ interface Query {
 interface PreviewData {
   token?: string
 }
-
 
 export default function Blog(props: PageProps) {
   const { blogPost, settings, preview, token } = props
@@ -110,8 +107,6 @@ export const getStaticProps: GetStaticProps =
   async (ctx) => {
     const { preview = false, params = {} } = ctx
 
-
-
     const [settings, blogPost] = await Promise.all([
       getSettings(),
       getAllBlogPosts(),
@@ -128,7 +123,8 @@ export const getStaticProps: GetStaticProps =
         blogPost,
         settings,
         preview,
-
       },
     }
   }
+
+Blog.Layout = Layout

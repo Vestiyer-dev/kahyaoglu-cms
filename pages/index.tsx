@@ -5,7 +5,10 @@ import { Post, Settings } from 'lib/sanity.queries'
 import { GetStaticProps } from 'next'
 import { groq } from 'next-sanity'
 import { createClient } from 'next-sanity'
+import Head from 'next/head'
 import { lazy } from 'react'
+import { BlogDisplay, Layout } from '~/components/common'
+import { By2Offset, CTABranded, Hero, SideWithImages, TestimonialSimpleCentered } from '~/components/homepage'
 
 // const PreviewIndexPage = lazy(() => import('components/PreviewIndexPage'))
 
@@ -24,7 +27,7 @@ interface PreviewData {
   token?: string
 }
 
-export default function Page(props: PageProps) {
+export default function Home(props: PageProps) {
   const { posts, settings, preview, token } = props
 
   // if (preview) {
@@ -40,8 +43,48 @@ export default function Page(props: PageProps) {
   // }
 
   // return <IndexPage posts={posts} settings={settings} />
-  return <div>hello</div>
+  return (
+    <>
+      <Head>
+        <title>Kahyaoğlu Peyzaj | En İyi Bahçeler Sizin de Hakkınız </title>
+        <meta
+          name="description"
+          content="Kahyaoglu Peyzaj olarak hem kaliteli hemde ekonomik çözümler üretiyoruz ve hayallerinize dokunuyoruz. İyi peyzajın insanların hayatlarını değiştirebileceğine inanıyoruz"
+        />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
+      <Hero />
+      <SideWithImages />
+      <By2Offset />
+      <TestimonialSimpleCentered />
+      <CTABranded />
+      <div className="relative mx-auto max-w-xl px-4 sm:px-6 lg:max-w-7xl lg:px-8 ">
+        <div className="pt-20 text-center">
+          <h2 className="text-3xl font-bold tracking-tight text-primary sm:text-4xl">
+            Peyzaj ve Bahçe Dünyası
+          </h2>
+          <p className="mx-auto mt-3 max-w-2xl text-xl text-gray-500 sm:mt-4">
+            Peyzaj ve bahçe dünyası ile ilgili tüm bilgileri burada
+            bulabilirsiniz.
+          </p>
+        </div>
+        <BlogDisplay posts={posts} blogMore={true} />
+      </div>
+    </>
+  );
 }
+
+
+
+Home.Layout = Layout;
+
+
+
+
+
+
+
 
 const client = projectId
   ? createClient({ projectId, dataset, apiVersion, useCdn })
@@ -50,15 +93,22 @@ const client = projectId
 const postFields = groq`
   _id,
   title,
+  titlePartOne,
+  titlePartTwo,
   date,
+  description,
   excerpt,
   coverImage,
   "slug": slug.current,
   "author": author->{name, picture},
+   content,
+   readTime,
+   displayImage,
 `
 
+
 export const indexQuery = groq`
-*[_type == "post"] | order(date desc, _updatedAt desc) {
+*[_type == "blog-post"] | order(date desc, _updatedAt desc) {
   ${postFields}
 }`
 

@@ -4,15 +4,18 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
-
-
-export default function BlogDisplay({ posts, blogMore }: { posts: Post[], blogMore: Boolean }) {
-
+export default function BlogDisplay({
+  posts,
+  blogMore,
+}: {
+  posts: Post[]
+  blogMore: Boolean
+}) {
   return (
     <>
       <div className="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-3">
         {posts.map((post) => {
-          const formattedDate = new Date(post.date + "").toLocaleDateString(
+          const formattedDate = new Date(post.date + '').toLocaleDateString(
             'en-US',
             {
               day: '2-digit',

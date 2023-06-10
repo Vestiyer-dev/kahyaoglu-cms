@@ -1,11 +1,20 @@
-import 'tailwindcss/tailwind.css'
-
+import '@styles/main.css'
+import '@styles/chrome-bug.css'
+import { type AppType } from "next/app";
 import { AppProps } from 'next/app'
+import { useEffect } from "react";
+import type { FC, ReactNode } from "react";
+import { Layout } from '~/components/common';
 
-export default function App({ Component, pageProps }: AppProps) {
+const Noop: FC<{ children?: ReactNode }> = ({ children }) => <>{children}</>
+const MyApp: AppType = ({ Component, pageProps }) => {
+  const Layout = (Component as any).Layout || Noop
   return (
     <>
-      <Component {...pageProps} />
+      <Layout pageProps={pageProps}>
+        <Component {...pageProps} />
+      </Layout>
     </>
   )
 }
+export default MyApp

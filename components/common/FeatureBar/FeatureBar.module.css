@@ -1,0 +1,6 @@
+.root {
+  @apply fixed bottom-0 z-30 w-full flex-row 
+  items-center justify-center bg-background-primary p-6 text-center
+  text-sm font-medium transition-all duration-300 ease-out
+  md:flex md:text-left;
+}

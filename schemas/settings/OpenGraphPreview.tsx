@@ -6,7 +6,10 @@ import satori, { type SatoriOptions } from 'satori'
 import styled from 'styled-components'
 import useSWR from 'swr/immutable'
 import { OpenGraphImage } from '~/components/common'
-import { height, width } from '~/components/common/OpenGraphImage/OpenGraphImage'
+import {
+  height,
+  width,
+} from '~/components/common/OpenGraphImage/OpenGraphImage'
 
 async function init(): Promise<SatoriOptions['fonts']> {
   if (!globalThis?.Intl?.Segmenter) {

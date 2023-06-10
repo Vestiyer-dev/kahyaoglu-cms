@@ -47,7 +47,6 @@ export const postBySlugQuery = groq`
 export interface Author {
   name?: string
   picture?: any
-  
 }
 
 export interface Post {
@@ -64,7 +63,6 @@ export interface Post {
   content?: any
   readTime?: number
   description?: string
-  
 }
 
 export interface Settings {
