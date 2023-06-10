@@ -3,7 +3,7 @@
 export const width = 1200
 export const height = 630
 
-export function OpenGraphImage(props: { title: string }) {
+export default function OpenGraphImage(props: { title: string }) {
   const { title } = props
   return (
     <div

@@ -30,6 +30,12 @@ export async function getAllPosts(): Promise<Post[]> {
   }
   return []
 }
+export async function getAllBlogPosts(): Promise<Post[]> {
+  if (client) {
+    return (await client.fetch(indexQuery)) || []
+  }
+  return []
+}
 
 export async function getAllPostsSlugs(): Promise<Pick<Post, 'slug'>[]> {
   if (client) {
@@ -49,7 +55,7 @@ export async function getPostBySlug(slug: string): Promise<Post> {
 export async function getPostAndMoreStories(
   slug: string,
   token?: string | null
-): Promise<{ post: Post; morePosts: Post[] }> {
+): Promise<{ post: Post | null; morePosts: Post[] }> {
   if (projectId) {
     const client = createClient({
       projectId,

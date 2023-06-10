@@ -17,6 +17,11 @@ export const indexQuery = groq`
   ${postFields}
 }`
 
+export const indexBlogPostQuery = groq`
+*[_type == "post"] | order(date desc, _updatedAt desc) {
+  ${postFields}
+}`
+
 export const postAndMoreStoriesQuery = groq`
 {
   "post": *[_type == "post" && slug.current == $slug] | order(_updatedAt desc) [0] {
@@ -42,17 +47,24 @@ export const postBySlugQuery = groq`
 export interface Author {
   name?: string
   picture?: any
+  
 }
 
 export interface Post {
   _id: string
   title?: string
+  titlePartOne?: string
+  titlePartTwo?: string
   coverImage?: any
+  displayImage?: any
   date?: string
   excerpt?: string
   author?: Author
   slug?: string
   content?: any
+  readTime?: number
+  description?: string
+  
 }
 
 export interface Settings {

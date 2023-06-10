@@ -1,0 +1,20 @@
+{
+  "title": "Kahyaoğlu Peyzaj: Profesyonel Bahçe & Peyzaj Bodrum",
+  "titleTemplate": "%s - Kahyaoğlu Peyzaj: Profesyonel Bahçe & Peyzaj Bodrum",
+  "description": "Bodrum'da hizmet veren Kahyaoğlu Peyzaj, ticari ve bireysel müşterilere kaliteli bahçe düzenlemesi, peyzaj tasarımı ve bakım hizmetleri sunar. Uzman kadromuzla hayalinizdeki bahçeyi yaratın.",
+  "openGraph": {
+    "title": "Kahyaoğlu Peyzaj: Profesyonel Bahçe & Peyzaj Bodrum",
+    "description": "Bodrum'da hizmet veren Kahyaoğlu Peyzaj, ticari ve bireysel müşterilere kaliteli bahçe düzenlemesi, peyzaj tasarımı ve bakım hizmetleri sunar. Uzman kadromuzla hayalinizdeki bahçeyi yaratın.",
+    "type": "website",
+    "url": "https:/www.kahyaoglupeyzaj.com",
+    "site_name": "Kahyaoğlu Peyzaj Bodrum",
+    "images": [
+      {
+        "url": "/card.png",
+        "width": "800",
+        "height": "600",
+        "alt": "Kahyaoğlu Peyzaj Bodrum"
+      }
+    ]
+  }
+}
