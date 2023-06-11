@@ -5,148 +5,55 @@ import Image from "next/image";
 
 import { motion, AnimatePresence } from "framer-motion";
 
-type Tasarim = {
-  id: string;
-  name: string;
-  description: string;
-  image: string;
-  width: number;
-  height: number;
-  category?: string;
-  tags?: string[];
-};
+//new sanity
+import { apiVersion, dataset, projectId, useCdn } from 'lib/sanity.api'
+import { getAllCategories, getAllReferanslar, getAllTags, getSettings } from 'lib/sanity.client'
+import { Category, Post, Settings, Tags } from 'lib/sanity.queries'
+import { GetServerSideProps, GetStaticProps } from 'next'
+import { groq } from 'next-sanity'
+import { createClient } from 'next-sanity'
+import { lazy } from 'react'
 
-const tasarimlar = [
-  {
-    id: "1",
-    name: "Yalıkavak Seba Taşevler Villa 170",
-    description:
-      "Villa 170 yumuşak peyzaj, sulama sistemi ve bahçe drenaj uygulaması tarafımızca yapılmıştır.",
-    image: TestImage.src,
-    width: TestImage.width,
-    height: TestImage.height,
-    category: "bireysel",
-    tags: ["Tasarım", "Uygulama"],
-  },
-  {
-    id: "2",
-    name: "Yalıkavak Seba Taşevler Villa 157",
-    description:
-      "Villa 157 yumuşak peyzaj ve sulama sistemleri tarafımızca tasarlanıp uygulanmıştır.",
-    image: TestImage.src,
-    width: TestImage.width,
-    height: TestImage.height,
-    category: "bireysel",
-    tags: ["Tasarım", "Uygulama"],
-  },
-  {
-    id: "3",
-    name: "Mesa Demirbükü Site Bakımı",
-    description:
-      "Bodrum'un seçkin ve elit sitelerinden Mesa Demirbükü'nün peyzaj bakımı tarafımızca düzenli olarak yapılmaktadır.",
-    image: TestImage.src,
-    width: TestImage.width,
-    height: TestImage.height,
-    category: "kurumsal",
-    tags: ["Bakım"],
-  },
-  {
-    id: "4",
-    name: "Seba Taşevler Site Bakımı",
-    description:
-      "Bodrum'un seçkin ve elit sitelerinden Seba Taşevler'in peyzaj bakımı tarafımızca düzenli olarak yapılmaktadır.",
-    image: TestImage.src,
-    width: TestImage.width,
-    height: TestImage.height,
-    category: "kurumsal",
-    tags: ["Bakım"],
-  },
-  {
-    id: "5",
-    name: "Yalıkavak Seba Taşevler 2. Etap 14 Villa",
-    description:
-      "Bodrum'un seçkin ve elit sitelerinden Seba Taşevler'in 2. Etap'ında bulunan 14 adet villanın sulama sitemleri tarafımızca projelendrilip uygulanmış, çim serimi yapılmıştır.",
-    image: TestImage.src,
-    width: TestImage.width,
-    height: TestImage.height,
-    category: "kurumsal",
-    tags: ["Tasarım", "Uygulama"],
-  },
-  {
-    id: "6",
-    name: "Yalıkavak Tilkicik Villa",
-    description:
-      "Yalıkavak Tilkicik'de bulunan seçkin müşterimizin villasının yumuşak peyzaj ve sulama sistemleri tarafımızca projelendirilip uygulanmıştır.",
-    image: TestImage.src,
-    width: TestImage.width,
-    height: TestImage.height,
-    category: "bireysel",
-    tags: ["Tasarım", "Uygulama"],
-  },
-  {
-    id: "7",
-    name: "Mesa Villa",
-    description:
-      "Bodrum'un en elit sitelerinden olan Mesa'da bulunan müşterimizin villasına ait yumuşak peyzaj ve sulama sistemleri tarafımızca tasarlanıp uygulanmış, bahçeye çim serimi yapılmıştır",
-    image: TestImage.src,
-    width: TestImage.width,
-    height: TestImage.height,
-    category: "bireysel",
-    tags: ["Tasarım", "Uygulama"],
-  },
-  {
-    id: "8",
-    name: "Yalıkavak Geriş Villa",
-    description:
-      "Bodrum'un seçkin beldelerinden Yalıkavak Geriş'de bulunan özel müşterimizin villasındaki sulama sistemleri ve taş duvarı tarafımızca projelendirilip uygulanmıştır",
-    image: TestImage.src,
-    width: TestImage.width,
-    height: TestImage.height,
-    category: "bireysel",
-    tags: ["Tasarım", "Uygulama"],
-  },
-  {
-    id: "9",
-    name: "Gölköy Mahallesi Villa",
-    description:
-      "Bodrum'un seçkin beldelerinden Gölköy'de bulunan villanın yumuşak peyzaj, sulama sistemi ve taş duvarı tarafımızca projelendirilip uygulanmıştır",
-    image: TestImage.src,
-    width: TestImage.width,
-    height: TestImage.height,
-    category: "bireysel",
-    tags: ["Tasarım", "Uygulama"],
-  },
-  {
-    id: "10",
-    name: "Yalıkavak Gökçebel Villa",
-    description:
-      "Seçkin müşterimizin Gökçebel'de bulunan villasının yumuşak peyzaj, sulama sistemleri, yürüyüş yolu, altyapı ve drenaj işlemleri tarafımızca projelendirilip uygulanmıştır.",
-    image: TestImage.src,
-    width: TestImage.width,
-    height: TestImage.height,
-    category: "bireysel",
-    tags: ["Tasarım", "Uygulama"],
-  },
-  {
-    id: "11",
-    name: "Torba 4 Villa",
-    description:
-      "Bodrum'un seçkin beldelerinden Torba'da bulunan 4 adet villanın yumuşak peyzaj, sulama sistemleri ve drenajı tarafımızca projelendirilip uygulanmıştır",
-    image: TestImage.src,
-    width: TestImage.width,
-    height: TestImage.height,
-    category: "kurumsal",
-    tags: ["Tasarım", "Uygulama"],
-  },
-];
+
+
 
 import type { FC } from "react";
+import { urlForImage } from "~/lib/sanity.image";
+
+
 
 type MenuButtonProps = {
   active: boolean;
   onClick: () => void;
   children: React.ReactNode;
 };
+
+interface ReferanslarProps {
+  referans: Referanslar
+  referanslar: Referanslar[]
+  tags: Tags[]
+  categories: Category[]
+  settings?: Settings
+  preview: boolean
+  token: string | null
+}
+
+
+interface ReferanslarQuery {
+  [key: string]: string
+}
+
+interface ReferanslarPreviewData {
+  token?: string
+}
+
+export interface Referanslar {
+  _id: string
+  referans?: string
+  coverImage?: any
+  categoryType?: any
+  tag?: any[]
+}
 
 export const MenuButton: FC<MenuButtonProps> = ({
   active,
@@ -157,24 +64,44 @@ export const MenuButton: FC<MenuButtonProps> = ({
     <button
       onClick={onClick}
       className={`${active
-          ? "bg-primary-dark text-white"
-          : "bg-primary text-white opacity-75 hover:bg-primary-dark"
+        ? "bg-primary-dark text-white"
+        : "bg-primary text-white opacity-75 hover:bg-primary-dark"
         } mr-2 rounded-md px-3 py-2 text-sm font-medium`}
     >
       {children}
     </button>
   );
 };
+type Referans = {
+  id: string;
+  name: string;
+  description: string;
+  image: string;
+  category: string;
+  tags: string[];
+};
+// const tags = ["Tasarım", "Uygulama", "Bakım"];
 
-const tags = ["Tasarım", "Uygulama", "Bakım"];
+export default function Referanslar(props: ReferanslarProps) {
+  const { referanslar, categories, tags: astag, settings, preview, token } = props
+  const tags = astag.map(tag => tag.tags);
 
-export default function Referanslar() {
-  // easing: "linear" | "ease-in" | "ease-out" | "ease-in-out" | string;
   const [kurumsalActive, setKurumsalActive] = React.useState(false);
   const [bireyselActive, setBireyselActive] = React.useState(false);
-  const [items, setItems] = React.useState(tasarimlar);
+  const [items, setItems] = React.useState(referanslar.map(referans => ({
+    id: referans._id,
+    name: referans.referans,
+    description: referans.referans,
+    image: urlForImage(referans.coverImage.asset._ref).height(600).width(900).url(),
+    category: referans.categoryType.toLowerCase(),
+    tags: referans.tag,
+  })));
   const [selectedTags, setSelectedTags] = React.useState<string[]>([]);
   const [noResults, setNoResults] = React.useState(false);
+
+
+
+
   const handleClickKurumsal = () => {
     setKurumsalActive((x) => !x);
   };
@@ -183,7 +110,7 @@ export default function Referanslar() {
   };
 
   const handleTags = (tag: string | null | undefined) => {
-    if (tag == null) return; // null or undefined check
+    if (tag === null) return; // null or undefined check
 
     if (selectedTags.includes(tag)) {
       setSelectedTags((x) => x.filter((x) => x !== tag));
@@ -193,7 +120,14 @@ export default function Referanslar() {
   };
 
   React.useEffect(() => {
-    let filteredItems = tasarimlar;
+    let filteredItems = referanslar.map(referans => ({
+      id: referans._id,
+      name: referans.referans,
+      description: referans.referans,
+      image: urlForImage(referans.coverImage.asset._ref).height(600).width(900).url(),
+      category: referans.categoryType.toLowerCase(),
+      tags: referans.tag,
+    }));
 
     if (kurumsalActive && !bireyselActive) {
       filteredItems = filteredItems.filter(
@@ -228,16 +162,22 @@ export default function Referanslar() {
     setKurumsalActive(false);
     setBireyselActive(false);
     setSelectedTags([]);
-    setItems(tasarimlar);
+    setItems(referanslar.map(referans => ({
+      id: referans._id,
+      name: referans.referans,
+      description: referans.referans,
+      image: urlForImage(referans.coverImage.asset._ref).height(40).width(40).url(),
+      category: referans.categoryType.toLowerCase(),
+      tags: referans.tag,
+    })));
   };
 
   //Animation
-  const [selectedItem, setSelectedItem] = useState<null | Tasarim>(null);
+  const [selectedItem, setSelectedItem] = useState<null | Referans>(null);
 
-  const handleCardClick = (item: Tasarim) => {
+  const handleCardClick = (item: Referans) => {
     setSelectedItem(item);
   };
-
   const handleCloseModal = () => {
     setSelectedItem(null);
   };
@@ -328,8 +268,8 @@ export default function Referanslar() {
                   className="aspect-square object-cover"
                   src={tasarim.image}
                   alt={tasarim.name}
-                  width={tasarim.width}
-                  height={tasarim.height}
+                  width={600}
+                  height={600}
                 />
                 <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-40 p-2 text-white transition-all duration-300 ease-out  group-hover:opacity-70">
                   <span className="text-lg font-medium">{tasarim.name}</span>
@@ -362,8 +302,8 @@ export default function Referanslar() {
                 <Image
                   src={selectedItem.image}
                   alt={selectedItem.name}
-                  width={selectedItem.width}
-                  height={selectedItem.height}
+                  width={900}
+                  height={600}
                   style={{
                     maxHeight: "70vh",
 
@@ -383,3 +323,41 @@ export default function Referanslar() {
 }
 
 Referanslar.Layout = Layout;
+
+
+const client = projectId
+  ? createClient({ projectId, dataset, apiVersion, useCdn })
+  : null
+
+
+
+
+
+
+export const getStaticProps: GetStaticProps =
+  // <
+  //     PageProps,
+  //     Query,
+  //     PreviewData
+  // >
+  async (ctx) => {
+    const { preview = false, params = {} } = ctx
+
+    const [settings, referanslar, tags, categories] = await Promise.all([
+      getSettings(),
+      getAllReferanslar(),
+      getAllTags(),
+      getAllCategories(),
+    ])
+
+
+    return {
+      props: {
+        referanslar,
+        settings,
+        tags,
+        categories,
+        preview,
+      },
+    }
+  }

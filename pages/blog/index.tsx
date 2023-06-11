@@ -1,12 +1,12 @@
 // import { BlogDisplay, Layout, SEO } from "~/components/common"
 import { BlogDisplay, Layout } from 'components/common'
 import { apiVersion, dataset, projectId, useCdn } from 'lib/sanity.api'
-import { getSettings } from 'lib/sanity.client'
+import { getAllBlogPosts, getSettings } from 'lib/sanity.client'
 import { Post, Settings } from 'lib/sanity.queries'
-import { GetServerSideProps, GetStaticProps } from 'next'
-import { groq } from 'next-sanity'
+import { GetStaticProps } from 'next'
+
 import { createClient } from 'next-sanity'
-import { lazy } from 'react'
+
 
 interface PageProps {
   post: Post
@@ -57,46 +57,6 @@ export default function Blog(props: PageProps) {
 const client = projectId
   ? createClient({ projectId, dataset, apiVersion, useCdn })
   : null
-
-const postFields = groq`
-   _id,
-   title,
-   titlePartOne,
-   titlePartTwo,
-   date,
-   description,
-   excerpt,
-   coverImage,
-   "slug": slug.current,
-   "author": author->{name, picture},
-    content,
-    readTime,
-    displayImage,
-`
-
-export const blogPostQuery = groq`
-*[_type == "blog-post"] | order(date desc, _updatedAt desc) {
-  ${postFields}
-}`
-
-export const postSlugsQuery = groq`
-*[_type == "blog-post" && defined(slug.current)][].slug.current
-`
-
-export async function getAllBlogPostsSlugs(): Promise<Pick<Post, 'slug'>[]> {
-  if (client) {
-    const slugs = (await client.fetch<string[]>(postSlugsQuery)) || []
-    return slugs.map((slug) => ({ slug }))
-  }
-  return []
-}
-
-export async function getAllBlogPosts(): Promise<Post[]> {
-  if (client) {
-    return (await client.fetch(blogPostQuery)) || []
-  }
-  return []
-}
 
 export const getStaticProps: GetStaticProps =
   // <

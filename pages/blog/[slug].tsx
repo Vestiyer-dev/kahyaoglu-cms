@@ -1,17 +1,12 @@
 // import { BlogDisplay, Layout, SEO } from "~/components/common"
 
 import { Layout, MoreStories, PostBody, SectionSeparator, SEO } from 'components/common'
-import * as demo from 'lib/demo.data'
-import { apiVersion, dataset, projectId, useCdn } from 'lib/sanity.api'
-import { getSettings } from 'lib/sanity.client'
+import { getAllBlogPostsSlugs, getBlogAndMoreStories, getSettings } from 'lib/sanity.client'
 import { urlForImage } from 'lib/sanity.image'
 import { Post, Settings } from 'lib/sanity.queries'
-import { GetServerSideProps, GetStaticProps } from 'next'
+import { GetStaticProps } from 'next'
 import Image from 'next/image'
-import { notFound } from 'next/navigation'
-import { groq } from 'next-sanity'
-import { createClient } from 'next-sanity'
-import { lazy } from 'react'
+
 
 interface OgImage {
   url?: string
@@ -200,80 +195,7 @@ export default function Slug(props) {
   )
 }
 
-// Blog.Layout = Layout
 
-const client = projectId
-  ? createClient({ projectId, dataset, apiVersion, useCdn })
-  : null
-
-const postFields = groq`
-    _id,
-    title,
-    titlePartOne,
-    titlePartTwo,
-    date,
-    description,
-    excerpt,
-    coverImage,
-    "slug": slug.current,
-    "author": author->{name, picture},
-     content,
-     readTime,
-     displayImage,
- `
-
-export const blogPostQuery = groq`
-*[_type == "blog-post"] | order(date desc, _updatedAt desc) {
-  ${postFields}
-}`
-
-export const postSlugsQuery = groq`
-*[_type == "blog-post" && defined(slug.current)][].slug.current
-`
-
-export async function getAllBlogPostsSlugs(): Promise<Pick<Post, 'slug'>[]> {
-  if (client) {
-    const slugs = (await client.fetch<string[]>(postSlugsQuery)) || []
-    return slugs.map((slug) => ({ slug }))
-  }
-  return []
-}
-
-export async function getAllBlogPosts(): Promise<Post[]> {
-  if (client) {
-    return (await client.fetch(blogPostQuery)) || []
-  }
-  return []
-}
-
-export const postAndMoreStoriesQuery = groq`
-{
-  "post": *[_type == "blog-post" && slug.current == $slug] | order(_updatedAt desc) [0] {
-    content,
-    ${postFields}
-  },
-  "blogPost": *[_type == "blog-post" && slug.current != $slug] | order(date desc, _updatedAt desc) [0...2] {
-    content,
-    ${postFields}
-  }
-}`
-
-export async function getPostAndMoreStories(
-  slug: string,
-  token?: string | null
-): Promise<{ post: Post; blogPost: Post[] }> {
-  if (projectId) {
-    const client = createClient({
-      projectId,
-      dataset,
-      apiVersion,
-      useCdn,
-      token: token || undefined,
-    })
-    return await client.fetch(postAndMoreStoriesQuery, { slug })
-  }
-  return { post: null, blogPost: [] }
-}
 
 export const getStaticProps: GetStaticProps<
   PageProps,
@@ -286,7 +208,7 @@ export const getStaticProps: GetStaticProps<
 
   const [settings, { post, blogPost }] = await Promise.all([
     getSettings(),
-    getPostAndMoreStories(params.slug, token),
+    getBlogAndMoreStories(params.slug, token),
   ])
 
   if (!post) {

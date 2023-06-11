@@ -13,9 +13,11 @@ import authorType from 'schemas/author'
 import postType from 'schemas/post'
 import blogPostType from 'schemas/blog-post'
 import settingsType from 'schemas/settings'
+import categoryType from 'schemas/category'
+import referansType from 'schemas/referans'
+import tagType from 'schemas/tags'
 
-const title =
-  process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE || 'Next.js Blog with Sanity.io'
+const title = process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE || 'Kahyaoglu Peyzaj'
 
 export default defineConfig({
   basePath: '/studio',
@@ -24,7 +26,15 @@ export default defineConfig({
   title,
   schema: {
     // If you want more content types, you can add them to this array
-    types: [authorType, postType, settingsType, blogPostType],
+    types: [
+      authorType,
+      postType,
+      settingsType,
+      blogPostType,
+      categoryType,
+      referansType,
+      tagType,
+    ],
   },
   plugins: [
     deskTool({

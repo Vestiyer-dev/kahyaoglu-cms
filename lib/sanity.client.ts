@@ -7,6 +7,15 @@ import {
   postSlugsQuery,
   type Settings,
   settingsQuery,
+  blogSlugsQuery,
+  blogPostQuery,
+  blogAndMoreStoriesQuery,
+  referanslarQuery,
+  tagsQuery,
+  categoryQuery,
+  Referanslar,
+  Tags,
+  Category,
 } from 'lib/sanity.queries'
 import { createClient } from 'next-sanity'
 
@@ -30,12 +39,6 @@ export async function getAllPosts(): Promise<Post[]> {
   }
   return []
 }
-export async function getAllBlogPosts(): Promise<Post[]> {
-  if (client) {
-    return (await client.fetch(indexQuery)) || []
-  }
-  return []
-}
 
 export async function getAllPostsSlugs(): Promise<Pick<Post, 'slug'>[]> {
   if (client) {
@@ -52,6 +55,39 @@ export async function getPostBySlug(slug: string): Promise<Post> {
   return {} as any
 }
 
+export async function getAllBlogPostsSlugs(): Promise<Pick<Post, 'slug'>[]> {
+  if (client) {
+    const slugs = (await client.fetch<string[]>(blogSlugsQuery)) || []
+    return slugs.map((slug) => ({ slug }))
+  }
+  return []
+}
+
+export async function getAllBlogPosts(): Promise<Post[]> {
+  if (client) {
+    return (await client.fetch(blogPostQuery)) || []
+  }
+  return []
+}
+
+export async function getBlogAndMoreStories(
+  slug: string,
+  token?: string | null
+): Promise<{ post: Post; blogPost: Post[] }> {
+  if (projectId) {
+    const client = createClient({
+      projectId,
+      dataset,
+      apiVersion,
+      useCdn,
+      token: token || undefined,
+    })
+    return await client.fetch(blogAndMoreStoriesQuery, { slug })
+  }
+  return { post: null, blogPost: [] }
+}
+
+
 export async function getPostAndMoreStories(
   slug: string,
   token?: string | null
@@ -67,4 +103,27 @@ export async function getPostAndMoreStories(
     return await client.fetch(postAndMoreStoriesQuery, { slug })
   }
   return { post: null, morePosts: [] }
+}
+
+
+export async function getAllReferanslar(): Promise<Referanslar[]> {
+  if (client) {
+    return (await client.fetch(referanslarQuery)) || []
+  }
+  return []
+}
+
+
+export async function getAllTags(): Promise<Tags[]> {
+  if (client) {
+    return (await client.fetch(tagsQuery)) || []
+  }
+  return []
+}
+
+export async function getAllCategories(): Promise<Category[]> {
+  if (client) {
+    return (await client.fetch(categoryQuery)) || []
+  }
+  return []
 }
