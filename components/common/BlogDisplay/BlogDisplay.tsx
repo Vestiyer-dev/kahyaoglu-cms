@@ -29,15 +29,12 @@ export default function BlogDisplay({
               key={post.title}
               className="flex flex-col overflow-hidden rounded-lg shadow-lg"
             >
-              <div className="flex-shrink-0">
+              <div className="relative flex-shrink-0 w-full h-48">
                 <Image
-                  className="h-48 w-full object-cover"
+                  className=" w-full object-cover"
                   src={urlForImage(post.displayImage.asset._ref)
-                    .height(250)
-                    .width(400)
                     .url()}
-                  width={400}
-                  height={250}
+                  fill
                   alt=""
                 />
               </div>
