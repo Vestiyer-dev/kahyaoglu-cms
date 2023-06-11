@@ -133,7 +133,7 @@ const Navbar = () => {
 
   return (
     <NavbarRoot>
-      <Popover className="relative bg-white shadow">
+      <Popover className="relative bg-background-secondary shadow">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="flex w-full items-center justify-between py-2 md:justify-start md:space-x-10 lg:py-6 ">
             <div className="block shrink-0 justify-start ">
@@ -143,7 +143,7 @@ const Navbar = () => {
               </Link>
             </div>
             <div className="-my-2 -mr-2 flex w-full justify-end lg:hidden ">
-              <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary">
+              <Popover.Button className="inline-flex items-center justify-center rounded-md bg-background-secondary p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary">
                 <span className="sr-only">Open menu</span>
                 <Bars3Icon className="h-6 w-6" aria-hidden="true" />
               </Popover.Button>
@@ -158,7 +158,7 @@ const Navbar = () => {
                     <Popover.Button
                       className={classNames(
                         open ? "text-gray-900" : "text-gray-500",
-                        "group inline-flex items-center rounded-md bg-white font-medium text-base hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                        "group inline-flex items-center rounded-md bg-background-secondary font-medium text-base hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
                       )}
                     >
                       <span>Bireysel Hizmetlerimiz</span>
@@ -181,7 +181,7 @@ const Navbar = () => {
                       leaveTo="opacity-0 translate-y-1"
                     >
                       <Popover.Panel className="absolute inset-x-0 z-10 -ml-4   mt-3 w-[60vw] max-w-[800px] transform px-2 shadow-md sm:px-0 lg:w-[55vw] ">
-                        <div className="bg-white">
+                        <div className="bg-background-secondary">
                           <div className="mx-auto grid max-w-7xl gap-y-6 px-4 py-6 sm:grid-cols-2 sm:gap-8 sm:px-6 sm:py-8 lg:grid-cols-2 lg:px-8 lg:py-12 xl:py-16">
                             {solutions.map((item) => (
                               <Link
@@ -229,7 +229,7 @@ const Navbar = () => {
                     <Popover.Button
                       className={classNames(
                         open ? "text-gray-900" : "text-gray-500",
-                        "group inline-flex items-center rounded-md bg-white font-medium text-base hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                        "group inline-flex items-center rounded-md bg-background-secondary font-medium text-base hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
                       )}
                     >
                       <span>Kurumsal Hizmetlerimiz</span>
@@ -252,7 +252,7 @@ const Navbar = () => {
                       leaveTo="opacity-0 translate-y-1"
                     >
                       <Popover.Panel className="absolute inset-x-0 z-10 -ml-4   mt-3 w-[80vw] max-w-[800px] transform px-2 shadow-md sm:px-0 lg:w-[60vw] ">
-                        <div className="bg-white">
+                        <div className="bg-background-secondary">
                           <div className="mx-auto grid max-w-7xl gap-y-6 px-4 py-6 sm:grid-cols-3 sm:gap-8 sm:px-6 sm:py-8 lg:grid-cols-3 lg:px-8 lg:py-12 xl:py-16">
                             {kurumsalMenu.map((item) => (
                               <Link
@@ -300,7 +300,7 @@ const Navbar = () => {
                     <Popover.Button
                       className={classNames(
                         open ? 'text-gray-900' : 'text-gray-500',
-                        'group inline-flex items-center rounded-md bg-white text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2'
+                        'group inline-flex items-center rounded-md bg-background-secondary text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2'
                       )}
                     >
                       <span>Kurumsal Hizmetlerimiz</span>
@@ -324,12 +324,12 @@ const Navbar = () => {
                     >
                       <Popover.Panel className="absolute inset-x-0 z-10 transform   -ml-4 mt-3 w-[80vw] lg:w-[60vw] max-w-[800px] px-2 sm:px-0 shadow-md ">
                         <div className="absolute inset-0 flex" aria-hidden="true">
-                          <div className="w-1/2 bg-white shadow-lg rounded-2xl" />
+                          <div className="w-1/2 bg-background-secondary shadow-lg rounded-2xl" />
                           <div className=" bg-gray-50 w-1/2  shadow-lg  rounded-2xl" />
                         </div>
                         <div className="relative mx-auto grid max-w-7xl grid-cols-1 ">
                           <nav
-                            className="grid gap-y-10 gap-x-8 bg-white px-4 py-8 sm:grid-cols-3  sm:py-12 sm:px-6 lg:px-8 xl:pr-12  shadow-lg  rounded-2xl"
+                            className="grid gap-y-10 gap-x-8 bg-background-secondary px-4 py-8 sm:grid-cols-3  sm:py-12 sm:px-6 lg:px-8 xl:pr-12  shadow-lg  rounded-2xl"
                             aria-labelledby="solutions-heading"
                           >
                             <h2 id="solutions-heading" className="sr-only">
@@ -432,7 +432,7 @@ const Navbar = () => {
             className="absolute inset-x-0 top-0 z-10 origin-top-right transform p-2 transition lg:hidden"
           >
             {({ close }) => (
-              <div className="divide-y-2 divide-gray-50 rounded-lg bg-white shadow-lg ring-1  ring-black ring-opacity-5">
+              <div className="divide-y-2 divide-gray-50 rounded-lg bg-background-secondary shadow-lg ring-1  ring-black ring-opacity-5">
                 <div className="px-5 pt-5 pb-6">
                   <div className="flex items-center justify-between">
                     <div>
@@ -441,7 +441,7 @@ const Navbar = () => {
                       </Link>
                     </div>
                     <div className="-mr-2">
-                      <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary">
+                      <Popover.Button className="inline-flex items-center justify-center rounded-md bg-background-secondary p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary">
                         <span className="sr-only">Close menu</span>
                         <XMarkIcon className="h-6 w-6" aria-hidden="true" />
                       </Popover.Button>

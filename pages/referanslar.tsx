@@ -189,7 +189,7 @@ export default function Referanslar(props: ReferanslarProps) {
   };
 
   return (
-    <div className="relative w-full bg-gray-50 pt-16 pb-20 lg:pt-24 lg:pb-28 ">
+    <div className="relative w-full bg-background-primary pt-16 pb-20 lg:pt-24 lg:pb-28 ">
       <SEO
         title="Referanslarımız"
         description={`Kahyaoğlu Peyzaj'ın Referans Projeleri`}
@@ -260,7 +260,7 @@ export default function Referanslar(props: ReferanslarProps) {
             <li className="group relative text-center " key={tasarim.id}>
               <motion.div
                 key={tasarim.id}
-                className="card relative aspect-square cursor-pointer rounded bg-white shadow-lg"
+                className="card relative aspect-square cursor-pointer rounded bg-background-primary shadow-lg"
                 onClick={() => handleCardClick(tasarim)}
                 layoutId={tasarim.id}
               >
@@ -291,7 +291,7 @@ export default function Referanslar(props: ReferanslarProps) {
                 {" "}
               </motion.div>
               <motion.div
-                className="modal-content fixed left-0 right-0 top-0  bottom-0 z-[100] mx-4 mt-[20vh] h-fit w-auto max-w-4xl  rounded bg-white  p-4 shadow-lg md:mx-8 md:mt-[3vh] lg:mx-auto "
+                className="modal-content fixed left-0 right-0 top-0  bottom-0 z-[100] mx-4 mt-[20vh] h-fit w-auto max-w-4xl  rounded bg-background-primary  p-4 shadow-lg md:mx-8 md:mt-[3vh] lg:mx-auto "
                 onClick={handleCloseModal}
                 initial="hidden"
                 animate="visible"

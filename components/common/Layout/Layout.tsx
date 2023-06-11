@@ -45,7 +45,7 @@ const Layout: React.FC<Props> = ({ children }) => {
 
 
   return (
-    <div className={cn(s.root)}>
+    <div className='bg-background-primary'>
       <Navbar />
       <main className="fit">{children}</main>
       <Footer />

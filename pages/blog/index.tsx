@@ -28,11 +28,11 @@ export default function Blog(props: PageProps) {
   const { blogPost, settings, preview, token } = props
 
   return (
-    <div className="relative bg-gray-50 px-4 pb-20 pt-16 sm:px-6 lg:px-8 lg:pb-28 lg:pt-24">
+    <div className="relative bg-background-primary px-4 pb-20 pt-16 sm:px-6 lg:px-8 lg:pb-28 lg:pt-24">
       {/* <SEO title="Blog - Bodrum Peyzajına Dair Her Şey" description='Ekibimiz tarafından özenle hazırlanan blog sayfalarımız ile Bodrum bahçelerine nasıl bakabileceğinizi, onlara uygulan olan bitkilieri ve daha bir çok bilgiliyi öğrenebilirsiniz.' /> */}
 
       <div className="absolute inset-0">
-        <div className="h-1/3 bg-white sm:h-2/3" />
+        <div className="h-1/3 bg-background-primary sm:h-2/3" />
       </div>
       <div className="relative mx-auto max-w-7xl">
         <div className="text-center">

@@ -61,7 +61,7 @@ export default function Home(props: PageProps) {
       <CTABranded />
       <div className="relative mx-auto max-w-xl px-4 sm:px-6 lg:max-w-7xl lg:px-8 ">
         <div className="pt-20 text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-primary sm:text-4xl">
+          <h2 className="text-3xl font-bold tracking-tight text-base sm:text-4xl">
             Peyzaj ve Bahçe Dünyası
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-xl text-gray-500 sm:mt-4">

@@ -54,7 +54,7 @@ const communicationFeatures = [
 
 export default function SideWithImages() {
   return (
-    <div className="overflow-hidden bg-gray-50 py-16 lg:py-24">
+    <div className="overflow-hidden bg-background-primary py-16 lg:py-24">
       <div className="relative mx-auto max-w-xl px-4 sm:px-6 lg:max-w-7xl lg:px-8 ">
         <svg
           className="absolute left-full hidden -translate-x-1/2 -translate-y-1/4 transform lg:block  "

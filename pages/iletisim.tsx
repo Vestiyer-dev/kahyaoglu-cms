@@ -26,9 +26,9 @@ export default function Iletisim() {
 
 
     return (
-        <div className="bg-white">
+        <div className="bg-background-primary">
             <SEO title="İletişim" description={`Hemen Kahyaoğlu Peyzaj'a ulaşın`} />
-            <div className="relative bg-white">
+            <div className="relative bg-background-primary">
                 <div className="lg:absolute lg:inset-0">
                     <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
                         <Image

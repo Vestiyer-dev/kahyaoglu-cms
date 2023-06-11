@@ -47,7 +47,7 @@ export default function Slug(props) {
   }
 
   return (
-    <div className="relative overflow-hidden bg-white py-16">
+    <div className="relative overflow-hidden bg-background-primary py-16">
       <SEO
         title={post.title}
         openGraph={ogImage}

@@ -15,7 +15,7 @@ export default function CTABranded() {
         </p>
         <Link
           href="/iletisim"
-          className="mt-8 inline-flex w-full items-center justify-center rounded-md border border-transparent bg-white px-5 py-3 font-medium text-base text-primary hover:bg-indigo-50 sm:w-auto"
+          className="mt-8 inline-flex w-full items-center justify-center rounded-md border border-transparent bg-background-primary px-5 py-3 font-medium text-base text-primary hover:bg-indigo-50 sm:w-auto"
         >
           Randevu al
         </Link>

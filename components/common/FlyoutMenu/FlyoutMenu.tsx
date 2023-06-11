@@ -51,12 +51,12 @@ export default function FlyoutMenu() {
     <Popover className="relative z-0">
       {({ open }) => (
         <>
-          <div className="relative z-10 bg-white shadow">
+          <div className="relative z-10 bg-background-secondary shadow">
             <div className="mx-auto flex max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
               <Popover.Button
                 className={classNames(
                   open ? 'text-gray-900' : 'text-gray-500',
-                  'group inline-flex items-center rounded-md bg-white text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2'
+                  'group inline-flex items-center rounded-md bg-background-secondary text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2'
                 )}
               >
                 <span>Solutions</span>
@@ -81,7 +81,7 @@ export default function FlyoutMenu() {
             leaveTo="opacity-0 -translate-y-1"
           >
             <Popover.Panel className="absolute inset-x-0 z-10 transform shadow-lg">
-              <div className="bg-white">
+              <div className="bg-background-secondary">
                 <div className="mx-auto grid max-w-7xl gap-y-6 px-4 py-6 sm:grid-cols-2 sm:gap-8 sm:px-6 sm:py-8 lg:grid-cols-4 lg:px-8 lg:py-12 xl:py-16">
                   {solutions.map((item) => (
                     <Link

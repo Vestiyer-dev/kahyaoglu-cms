@@ -86,7 +86,7 @@ export default function Kurumsal() {
           </div>
         </div>
       </div>
-      <div className="bg-white py-12">
+      <div className="bg-background-primary py-12">
         <div className="mx-auto max-w-xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
           <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900  sm:text-4xl md:py-12 ">
             Değerlerimiz

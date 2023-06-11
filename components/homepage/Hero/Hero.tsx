@@ -34,7 +34,7 @@ export default function Hero() {
 
                             <a
                                 href="#"
-                                className="flex w-full items-center justify-center rounded-md border border-transparent bg-white px-8 py-3 text-base font-medium text-primary hover:bg-gray-50 md:py-4 md:px-10 md:text-lg"
+                                className="flex w-full items-center justify-center rounded-md border border-transparent bg-background-primary px-8 py-3 text-base font-medium text-primary hover:bg-background-primary md:py-4 md:px-10 md:text-lg"
                             >
                                 Live demo
                             </a>

@@ -41,7 +41,7 @@ export default function BlogDisplay({
                   alt=""
                 />
               </div>
-              <div className="flex flex-1 flex-col justify-between bg-white p-6">
+              <div className="flex flex-1 flex-col justify-between bg-background-secondary p-6">
                 <div className="flex-1">
                   <Link href={`/blog/${post.slug}`} className="mt-2 block">
                     <p className="text-xl font-semibold text-gray-900">
