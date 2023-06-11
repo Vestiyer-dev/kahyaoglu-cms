@@ -44,11 +44,13 @@ export default function Hero() {
       </div>
       <div className="relative h-64 w-full sm:h-72 md:h-96 lg:absolute lg:inset-y-0 lg:right-0 lg:h-full lg:w-1/2">
         <Image
-          className="absolute inset-0 z-10 h-full w-full object-cover"
+          // className="absolute inset-0 z-10 h-full w-full object-cover"
           src={HeroPhoto.src}
-          alt=""
-          width={HeroPhoto.width}
-          height={HeroPhoto.height}
+          alt="Kahyaoğlu Peyzaj Ana Sayfa"
+          width={650}
+          height={650}
+          priority
+
         />
       </div>
     </main>

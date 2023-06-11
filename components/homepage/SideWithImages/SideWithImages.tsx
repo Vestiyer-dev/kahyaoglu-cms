@@ -178,8 +178,8 @@ export default function SideWithImages() {
               className=" inset-0 h-full w-full rounded-2xl  object-cover"
               src={BireyselImage.src}
               alt=""
-              width={BireyselImage.width}
-              height={BireyselImage.height}
+              width={600}
+              height={600}
             />
           </div>
         </div>
@@ -298,8 +298,8 @@ export default function SideWithImages() {
                 className=" inset-0 h-full w-full rounded-2xl object-cover "
                 src={KurumsalImage.src}
                 alt=""
-                width={KurumsalImage.width}
-                height={KurumsalImage.height}
+                width={600}
+                height={600}
               />
             </div>
           </div>
