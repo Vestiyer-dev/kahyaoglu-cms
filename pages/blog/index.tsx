@@ -1,5 +1,5 @@
 // import { BlogDisplay, Layout, SEO } from "~/components/common"
-import { BlogDisplay, Layout } from 'components/common'
+import { BlogDisplay, Layout, SEO } from 'components/common'
 import { apiVersion, dataset, projectId, useCdn } from 'lib/sanity.api'
 import { getAllBlogPosts, getSettings } from 'lib/sanity.client'
 import { Post, Settings } from 'lib/sanity.queries'
@@ -29,7 +29,7 @@ export default function Blog(props: PageProps) {
 
   return (
     <div className="relative bg-background-primary px-4 pb-20 pt-16 sm:px-6 lg:px-8 lg:pb-28 lg:pt-24">
-      {/* <SEO title="Blog - Bodrum Peyzajına Dair Her Şey" description='Ekibimiz tarafından özenle hazırlanan blog sayfalarımız ile Bodrum bahçelerine nasıl bakabileceğinizi, onlara uygulan olan bitkilieri ve daha bir çok bilgiliyi öğrenebilirsiniz.' /> */}
+      <SEO title="Blog - Bodrum Peyzajına Dair Her Şey" description='Ekibimiz tarafından özenle hazırlanan blog sayfalarımız ile Bodrum bahçelerine nasıl bakabileceğinizi, onlara uygulan olan bitkilieri ve daha bir çok bilgiliyi öğrenebilirsiniz.' />
 
       <div className="absolute inset-0">
         <div className="h-1/3 bg-background-primary sm:h-2/3" />
