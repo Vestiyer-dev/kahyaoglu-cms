@@ -35,7 +35,7 @@ export default function BlogDisplay({
                   src={urlForImage(post.displayImage.asset._ref)
                     .url()}
                   fill
-                  alt=""
+                  alt={post.title}
                 />
               </div>
               <div className="flex flex-1 flex-col justify-between bg-background-secondary p-6">

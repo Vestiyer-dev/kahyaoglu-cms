@@ -30,13 +30,12 @@ export default function Iletisim() {
             <SEO title="İletişim" description={`Hemen Kahyaoğlu Peyzaj'a ulaşın`} />
             <div className="relative bg-background-primary">
                 <div className="lg:absolute lg:inset-0">
-                    <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
+                    <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 relative" >
                         <Image
                             className=" h-80 w-full object-cover lg:absolute lg:h-full"
                             src={GardenImage.src}
-                            alt=""
-                            width={GardenImage.width}
-                            height={GardenImage.height}
+                            alt="iletişim sayfası resmi"
+                            fill
                         />
 
 

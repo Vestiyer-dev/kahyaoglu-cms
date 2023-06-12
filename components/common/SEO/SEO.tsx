@@ -79,6 +79,7 @@ const SEO: FC<Props> = ({
    */
   return (
     <Head>
+      <link rel="icon" href="/favicon/favicon.ico" />
       <title key="title">
         {title ? `${config.titleTemplate.replace(/%s/g, title)}` : config.title}
       </title>
@@ -125,8 +126,8 @@ const SEO: FC<Props> = ({
       {openGraph?.images?.length
         ? openGraph.images.map((img, index) => ogImage(img, index))
         : // eslint-disable-next-line
-          // @ts-ignore:next-line
-          ogImage(config.openGraph.images[0], 0)}
+        // @ts-ignore:next-line
+        ogImage(config.openGraph.images[0], 0)}
       {/* {config.twitter.cardType && (
         <meta
           key="twitter:card"

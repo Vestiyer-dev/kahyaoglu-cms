@@ -1,12 +1,7 @@
-import { PreviewSuspense } from '@sanity/preview-kit'
-import { apiVersion, dataset, projectId, useCdn } from 'lib/sanity.api'
-import { getAllPosts, getSettings } from 'lib/sanity.client'
+import { getAllBlogPosts, getSettings } from 'lib/sanity.client'
 import { Post, Settings } from 'lib/sanity.queries'
 import { GetStaticProps } from 'next'
-import { groq } from 'next-sanity'
-import { createClient } from 'next-sanity'
 import Head from 'next/head'
-import { lazy } from 'react'
 import { BlogDisplay, Layout } from '~/components/common'
 import { By2Offset, CTABranded, Hero, SideWithImages, TestimonialSimpleCentered } from '~/components/homepage'
 
@@ -51,7 +46,7 @@ export default function Home(props: PageProps) {
           name="description"
           content="Kahyaoglu Peyzaj olarak hem kaliteli hemde ekonomik çözümler üretiyoruz ve hayallerinize dokunuyoruz. İyi peyzajın insanların hayatlarını değiştirebileceğine inanıyoruz"
         />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon/favicon.ico" />
       </Head>
 
       <Hero />
@@ -84,40 +79,6 @@ Home.Layout = Layout;
 
 
 
-
-
-const client = projectId
-  ? createClient({ projectId, dataset, apiVersion, useCdn })
-  : null
-
-const postFields = groq`
-  _id,
-  title,
-  titlePartOne,
-  titlePartTwo,
-  date,
-  description,
-  excerpt,
-  coverImage,
-  "slug": slug.current,
-  "author": author->{name, picture},
-   content,
-   readTime,
-   displayImage,
-`
-
-
-export const indexQuery = groq`
-*[_type == "blog-post"] | order(date desc, _updatedAt desc) {
-  ${postFields}
-}`
-
-export async function getAllBlogPosts(): Promise<Post[]> {
-  if (client) {
-    return (await client.fetch(indexQuery)) || []
-  }
-  return []
-}
 
 export const getStaticProps: GetStaticProps<
   PageProps,
