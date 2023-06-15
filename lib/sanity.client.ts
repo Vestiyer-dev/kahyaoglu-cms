@@ -16,6 +16,7 @@ import {
   Referanslar,
   Tags,
   Category,
+  kvkkQuery,
 } from 'lib/sanity.queries'
 import { createClient } from 'next-sanity'
 
@@ -150,6 +151,17 @@ export async function getAllTags(): Promise<Tags[]> {
   if (client) {
     return (
       (await client.fetch(tagsQuery, {
+        next: { revalidate: revalitateSeconds },
+      })) || []
+    )
+  }
+  return []
+}
+
+export async function getKvkkMetni(): Promise<Tags[]> {
+  if (client) {
+    return (
+      (await client.fetch(kvkkQuery, {
         next: { revalidate: revalitateSeconds },
       })) || []
     )

@@ -16,6 +16,7 @@ import settingsType from 'schemas/settings'
 import categoryType from 'schemas/category'
 import referansType from 'schemas/referans'
 import tagType from 'schemas/tags'
+import kvkkType from '~/schemas/singletons/kvkk'
 
 const title = process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE || 'Kahyaoglu Peyzaj'
 
@@ -34,6 +35,7 @@ export default defineConfig({
       categoryType,
       referansType,
       tagType,
+      kvkkType,
     ],
   },
   plugins: [
@@ -53,6 +55,7 @@ export default defineConfig({
     }),
     // Add an image asset source for Unsplash
     unsplashImageAsset(),
+  
     // Vision lets you query your content with GROQ in the studio
     // https://www.sanity.io/docs/the-vision-plugin
     visionTool({ defaultApiVersion: apiVersion }),

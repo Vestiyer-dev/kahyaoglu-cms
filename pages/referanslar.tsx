@@ -49,9 +49,11 @@ interface ReferanslarPreviewData {
 
 export interface Referanslar {
   _id: string
+  title?: string
   referans?: string
   coverImage?: any
   categoryType?: any
+  description?: string
   tag?: any[]
 }
 
@@ -74,7 +76,7 @@ export const MenuButton: FC<MenuButtonProps> = ({
 };
 type Referans = {
   id: string;
-  name: string;
+  title: string;
   description: string;
   image: string;
   category: string;
@@ -90,7 +92,7 @@ export default function Referanslar(props: ReferanslarProps) {
   const [bireyselActive, setBireyselActive] = React.useState(false);
   const [items, setItems] = React.useState(referanslar.map(referans => ({
     id: referans._id,
-    name: referans.referans,
+    title: referans.title,
     description: referans.referans,
     image: urlForImage(referans.coverImage.asset._ref).height(600).width(900).url(),
     category: referans.categoryType.toLowerCase(),
@@ -98,6 +100,7 @@ export default function Referanslar(props: ReferanslarProps) {
   })));
   const [selectedTags, setSelectedTags] = React.useState<string[]>([]);
   const [noResults, setNoResults] = React.useState(false);
+
 
 
 
@@ -122,7 +125,7 @@ export default function Referanslar(props: ReferanslarProps) {
   React.useEffect(() => {
     let filteredItems = referanslar.map(referans => ({
       id: referans._id,
-      name: referans.referans,
+      title: referans.title,
       description: referans.referans,
       image: urlForImage(referans.coverImage.asset._ref).height(600).width(900).url(),
       category: referans.categoryType.toLowerCase(),
@@ -164,7 +167,7 @@ export default function Referanslar(props: ReferanslarProps) {
     setSelectedTags([]);
     setItems(referanslar.map(referans => ({
       id: referans._id,
-      name: referans.referans,
+      title: referans.title,
       description: referans.referans,
       image: urlForImage(referans.coverImage.asset._ref).height(40).width(40).url(),
       category: referans.categoryType.toLowerCase(),
@@ -267,12 +270,12 @@ export default function Referanslar(props: ReferanslarProps) {
                 <Image
                   className="aspect-square object-cover"
                   src={tasarim.image}
-                  alt={tasarim.name}
+                  alt={tasarim.title}
                   width={600}
                   height={600}
                 />
                 <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-40 p-2 text-white transition-all duration-300 ease-out  group-hover:opacity-70">
-                  <span className="text-lg font-medium">{tasarim.name}</span>
+                  <span className="text-lg font-medium">{tasarim.title}</span>
                 </div>
               </motion.div>
             </li>
@@ -301,7 +304,7 @@ export default function Referanslar(props: ReferanslarProps) {
               >
                 <Image
                   src={selectedItem.image}
-                  alt={selectedItem.name}
+                  alt={selectedItem.title}
                   width={900}
                   height={600}
                   style={{
@@ -311,7 +314,7 @@ export default function Referanslar(props: ReferanslarProps) {
                   className="mb-4 aspect-square rounded object-cover "
                 />
 
-                <h2 className="text-2xl font-bold">{selectedItem.name}</h2>
+                <h2 className="text-2xl font-bold">{selectedItem.title}</h2>
                 <p className=" text-lg">{selectedItem.description}</p>
               </motion.div>
             </>

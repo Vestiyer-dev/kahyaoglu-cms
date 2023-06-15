@@ -70,7 +70,7 @@ export default function Tasarim() {
         title="Tasarım - Kurumsal Hizmetlerimiz"
         description="Kahyaoğlu Peyzaj Kurumsal Hizmetlerimiz Tasarım"
       />
-      <div
+      {/* <div
         className="relative w-full bg-black bg-opacity-40 bg-cover bg-blend-darken"
         style={{
           backgroundImage: `url(${KurumsalTasarimBackgroundImage.src})`,
@@ -80,7 +80,27 @@ export default function Tasarim() {
           <h2 className="py-4 text-xl font-semibold">Servislerimiz</h2>
           <h1 className="pb-8 text-3xl font-semibold">Kurumsal Tasarım</h1>
         </div>
+      </div> */}
+      <div
+        className="w-full relative aspect-[2.2]
+        "
+      >
+
+        <div className=" absolute inset-0 py-52   text-center text-white z-20">
+          <h2 className="py-4 text-xl font-semibold">Servislerimiz</h2>
+          <h1 className="pb-8 text-3xl font-semibold">Kurumsal Tasarım</h1>
+        </div>
+        <div className="absolute inset-0 w-full z-0 aspect-[2.2]">
+          <Image
+            className=" mix-blend-darken  bg-black brightness-50 object-cover"
+            src={KurumsalTasarimBackgroundImage.src}
+            fill
+            alt="Kurumsal Tasarım"
+            priority
+          />
+        </div>
       </div>
+
       <div className="grid w-full max-w-5xl grid-cols-1 gap-x-10  gap-y-4 py-8 px-8 md:grid-cols-2 md:py-20">
         <h2 className="text-4xl font-semibold text-primary">
           Kahyaoğlu Payzaj uzman kadrosu ve yenilikçi çözümleriyle

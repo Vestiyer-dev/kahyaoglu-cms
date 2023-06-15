@@ -92,6 +92,7 @@ category
 const referanslarFields = groq`
 _id,
 referans,
+title,
 coverImage,
 "categoryType": categoryType->category,
 "tag": tags[]->tags,
@@ -110,6 +111,11 @@ export const tagsQuery = groq`
 export const categoryQuery = groq`
 *[_type == "category"] | order(date desc, _updatedAt desc){
   ${categoryFields}
+}`
+export const kvkkQuery = groq`
+*[_type == "kvkk-post"][0]{
+  content,
+    title
 }`
 
 export interface Author {
@@ -141,7 +147,6 @@ export interface Settings {
   }
 }
 
-
 export interface Tags {
   _id: string
   tags?: string
@@ -151,7 +156,6 @@ export interface Category {
   _id: string
   category?: string
 }
-
 
 export interface Referanslar {
   _id: string

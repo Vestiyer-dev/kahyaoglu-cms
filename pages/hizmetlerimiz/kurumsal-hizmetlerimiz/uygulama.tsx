@@ -94,15 +94,36 @@ export default function Tasarim() {
         description="Kahyaoğlu Peyzaj Kurumsal Hizmetlerimiz Uygulama"
       />
 
-      <div
+      {/* <div
         className="relative w-full bg-black bg-opacity-40 bg-cover bg-blend-darken"
         style={{
           backgroundImage: `url(${BireyselUygulamaBackgroundImage.src})`,
         }}
       >
+
         <div className="py-52  text-center text-white">
           <h2 className="py-4 text-xl font-semibold">Servislerimiz</h2>
           <h1 className="pb-8 text-3xl font-semibold">Kurumsal Uygulamalar</h1>
+        </div>
+      </div> */}
+
+      <div
+        className="w-full relative aspect-[2.2]
+        "
+      >
+
+        <div className=" absolute inset-0 py-52   text-center text-white z-20">
+          <h2 className="py-4 text-xl font-semibold">Servislerimiz</h2>
+          <h1 className="pb-8 text-3xl font-semibold">Kurumsal Uygulamalar</h1>
+        </div>
+        <div className="absolute inset-0 w-full z-0 aspect-[2.2]">
+          <Image
+            className=" mix-blend-darken  bg-black brightness-50 object-cover"
+            src={BireyselUygulamaBackgroundImage.src}
+            fill
+            alt="Kurumsal Hizmetlerimiz"
+            priority
+          />
         </div>
       </div>
       <div className="grid w-full max-w-5xl grid-cols-1 gap-x-10  gap-y-4 py-8 px-8 md:grid-cols-2 md:py-20">

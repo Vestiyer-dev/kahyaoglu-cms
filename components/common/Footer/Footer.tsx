@@ -28,6 +28,7 @@ const navigation = {
     { name: 'Blog', href: '/blog' },
     { name: 'İletişim', href: '/iletisim' },
     { name: 'Referanslarımız', href: '/referanslar' },
+    { name: 'KVKK Aydınlatma Metni', href: '/kvkk-aydinlatma-metni' },
   ],
   social: [
 
