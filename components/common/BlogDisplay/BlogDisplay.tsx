@@ -14,7 +14,7 @@ export default function BlogDisplay({
   return (
     <>
       <div className="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-3">
-        {posts.map((post) => {
+        {posts.slice(0, 3).map((post) => {
           const formattedDate = new Date(post.date + '').toLocaleDateString(
             'en-US',
             {

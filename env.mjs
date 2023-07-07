@@ -9,7 +9,8 @@ const server = z.object({
   NODE_ENV: z.enum(["development", "test", "production"]),
   EMAIL_SYSTEM: z.string(),
 GOOGLE_API_KEY: z.string(),
-GOOGLE_SHEET_ID: z.string()
+GOOGLE_SHEET_ID: z.string(),
+
 });
 
 /**
@@ -32,6 +33,7 @@ const processEnv = {
   EMAIL_SYSTEM: process.env.EMAIL_SYSTEM,
   GOOGLE_API_KEY: process.env.GOOGLE_API_KEY,
   GOOGLE_SHEET_ID: process.env.GOOGLE_SHEET_ID,
+  NEXT_PUBLIC_GOOGLE_MAPS_API_KEY:z.string()
   // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
 };
 

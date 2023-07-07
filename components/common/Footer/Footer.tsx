@@ -2,6 +2,11 @@
 import Link from 'next/link'
 
 import { Container } from '@components/ui'
+import GoogleMapReact from 'google-map-react';
+import MarkerF from 'google-map-react';
+import { useMemo } from 'react';
+import MapView from '../MapView/MapView';
+import { HomeIcon, MapIcon, PhoneIcon } from '@heroicons/react/24/outline';
 
 
 
@@ -20,10 +25,19 @@ import { Container } from '@components/ui'
 
 // const { sitePages } = usePages(pages)
 
+
 const navigation = {
-  main: [
+  hizmetlerimiz: [
     { name: 'Bireysel Hizmetlerimiz', href: '/hizmetlerimiz/bireysel-hizmetlerimiz' },
+    { name: 'Bireysel Tasarim', href: '/hizmetlerimiz/bireysel-hizmetlerimiz/tasarim' },
+    { name: 'Bireysel Uygulama', href: '/hizmetlerimiz/bireysel-hizmetlerimiz/uygulama' },
     { name: 'Kurumsal Hizmetlerimiz', href: '/hizmetlerimiz/kurumsal-hizmetlerimiz' },
+    { name: 'Kurumsal Tasarım', href: '/hizmetlerimiz/kurumsal-hizmetlerimiz/tasarim' },
+    { name: 'Kurumsal Uygulama', href: '/hizmetlerimiz/kurumsal-hizmetlerimiz/uygulama' },
+    { name: 'Kurumsal Bakım', href: '/hizmetlerimiz/kurumsal-hizmetlerimiz/bakim' },
+
+  ],
+  hakkimizda: [
     { name: 'Kurumsal', href: '/kurumsal' },
     { name: 'Blog', href: '/blog' },
     { name: 'İletişim', href: '/iletisim' },
@@ -50,15 +64,79 @@ const navigation = {
   ],
 }
 
+
+
+const AnyReactComponent = ({ text }) => <div>{text}</div>;
 const Footer = () => {
 
 
   return (
     <footer>
-      <Container className="">
+      <div className=" bg-white mt-12 shadow-inner border-t ">
 
-        <div className="mx-auto max-w-7xl overflow-hidden py-12 px-4 sm:px-6 lg:px-8">
-          <nav className="-mx-5 -my-2 flex flex-wrap justify-center" aria-label="Footer">
+        <div className="mx-auto max-w-7xl overflow-hidden py-12 px-6 sm:px-6 lg:px-8">
+          <nav className='flex flex-col gap-4 divide-y-2 sm:divide-y-0 sm:grid  sm:grid-cols-3'>
+            <div>
+              <h3 className="text-base font-semibold text-gray-400 tracking-wider ">
+                Hizmetlerimiz
+              </h3>
+              {navigation.hizmetlerimiz.map((item) => (
+                <div key={item.name} className=" py-2">
+                  <Link href={item.href} className="text-base text-gray-500 hover:text-gray-900">
+                    {item.name}
+                  </Link>
+                </div>
+              ))}
+            </div>
+            <div>
+              <h3 className="text-base font-semibold text-gray-400 tracking-wider ">
+                Hakkımızda
+              </h3>
+              {navigation.hakkimizda.map((item) => (
+                <div key={item.name} className=" py-2">
+                  <Link href={item.href} className="text-base text-gray-500 hover:text-gray-900">
+                    {item.name}
+                  </Link>
+                </div>
+              ))}
+            </div>
+
+            <div className='flex flex-col gap-2'>
+              <Link href="/iletisim">
+                <h3 className="text-base font-semibold text-gray-400 tracking-wider ">
+                  İletişim
+                </h3>
+              </Link>
+              <Link href="/iletisim">
+                <span className="text-base text-gray-500 hover:text-gray-900">
+                  Sizi Arayalım
+                </span>
+              </Link>
+
+              <Link href="tel:+905335044584" className='flex items-center '>
+                <PhoneIcon className="h-6 w-6  flex-shrink-0 text-gray-400 mt-1" aria-hidden="true" />
+                <p className="mt-1 pl-1  text-base text-gray-500 hover:text-gray-900">
+                  +90 533 504 45 84
+                </p>
+              </Link>
+
+              <Link className='flex items-center' href="https://www.google.com/search?q=kahyaoglu+peyzaj&rlz=1C1GCEU_trTR1014TR1014&oq=kahyaoglu+peyzaj&aqs=chrome.0.69i59j0i22i30j69i60l3.3989j0j4&sourceid=chrome&ie=UTF-8#">
+                <MapIcon className="h-6 w-6 text-gray-400 mt-1 flex-shrink-0" aria-hidden="true" />
+                <p className="mt-1 pl-1 text-base text-gray-500 hover:text-gray-900">
+                  Gölköy mahallesi, Atatürk Cd. no:6/A, 48400 Bodrum
+                </p>
+              </Link>
+
+              <div className='w-full aspect-video rounded-xl overflow-clip'>
+                <MapView />
+
+
+              </div>
+
+            </div>
+          </nav>
+
+          {/* <nav className="-mx-5 -my-2 flex flex-wrap justify-center" aria-label="Footer">
             {navigation.main.map((item) => (
               <div key={item.name} className="px-5 py-2">
                 <Link href={item.href} className="text-base text-gray-500 hover:text-gray-900">
@@ -66,7 +144,10 @@ const Footer = () => {
                 </Link>
               </div>
             ))}
-          </nav>
+          </nav> */}
+
+
+
           <div className="mt-8 flex justify-center space-x-6">
             {navigation.social.map((item) => (
               <Link key={item.name} href={item.href} className="text-gray-400 hover:text-gray-500">
@@ -81,7 +162,7 @@ const Footer = () => {
 
 
 
-      </Container>
+      </div>
     </footer>
   )
 }
@@ -89,3 +170,5 @@ const Footer = () => {
 
 
 export default Footer
+
+
